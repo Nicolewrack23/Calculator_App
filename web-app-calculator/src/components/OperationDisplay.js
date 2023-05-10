@@ -3,7 +3,10 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// OperationDisplay should have its own css styling instead of being mixed with the main code
 
+// I would recommend renaming the function OperationDisplay to calculatorDisplay or similar to make it more clear what this function is doing.
+// recommend defining the props of what h and d stand for more clarity on what data these are likely to hold
 export default function OperationDisplay({ h, d }) {
   return (
     <>
@@ -14,6 +17,7 @@ export default function OperationDisplay({ h, d }) {
           <Typography>Past Calculations: </Typography>
         </AccordionSummary>
         <AccordionDetails>
+          {/* remove the ? */}
           {h?.map((operation, index) => (
             <Typography key={index}>{operation}</Typography>
           ))}
