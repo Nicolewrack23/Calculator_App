@@ -10,7 +10,8 @@ function App() {
   const [secondOperand, setSecondOperand] = useState("");
   const [operator, setOperator] = useState("");
   const [result, setResult] = useState("");
-  // The useState is only showing the array default not updating
+  /* The useState is only showing the array default not updating 
+  I recommend AddToHistory function for updating history */
   const [history, setHistory] = useState(["1 + 1 = 2", "2 * 2 = 4"]);
 
   const theme = createTheme({
@@ -81,7 +82,8 @@ function App() {
       <div className="App">
         <ButtonContainer
           onButton={buttonClicked}
-          //A need for a AddToHistory function for updating history after deletion as it only deletes the default data you have stored.
+          /* A need for a AddToHistory function for updating history after deletion 
+          as it only deletes the default data you have stored. */
           onClear={() => setHistory([])}
         ></ButtonContainer>
         {/* d and h is not descriptive this could be changed to "display" and "history" */}
