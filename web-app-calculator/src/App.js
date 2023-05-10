@@ -10,6 +10,8 @@ function App() {
   const [secondOperand, setSecondOperand] = useState("");
   const [operator, setOperator] = useState("");
   const [result, setResult] = useState("");
+  /* The useState is only showing the array default not updating 
+  I recommend AddToHistory function for updating history */
   const [history, setHistory] = useState(["1 + 1 = 2", "2 * 2 = 4"]);
 
   const theme = createTheme({
@@ -34,6 +36,9 @@ function App() {
 
   const buttonClicked = (char) => {
     if (isFirstOperand(char)) {
+      /* having (previousValue + char) allows for the user to press the equals button 
+      and make it apart of the first operand example: "1=2" + "33" = NaN.
+       recommend adding an if statement to solve this issue */
       setFirstOperand((previousValue) => previousValue + char);
     } else if (isSecondOperand(char)) {
       if (char === "=") {
@@ -58,11 +63,12 @@ function App() {
     return char === "+" || char === "-" || char === "*" || char === "/";
   };
 
+  // clearStates is empty and to avoid confusion it can be taken out
   const clearStates = () => {};
 
   const calculateResult = () => {
     setResult(Number(firstOperand) + Number(secondOperand));
-    clearStates();
+    clearStates(); //To avoid confusion recommend taking it out.
   };
 
   useEffect(() => {
@@ -76,8 +82,11 @@ function App() {
       <div className="App">
         <ButtonContainer
           onButton={buttonClicked}
+          /* A need for a AddToHistory function for updating history after deletion 
+          as it only deletes the default data you have stored. */
           onClear={() => setHistory([])}
         ></ButtonContainer>
+        {/* d and h is not descriptive this could be changed to "display" and "history" */}
         <OperationDisplay d={operationDisplay} h={history}></OperationDisplay>
       </div>
     </ThemeProvider>

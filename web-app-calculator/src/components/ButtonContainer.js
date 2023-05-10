@@ -1,10 +1,15 @@
 import { Button, ButtonGroup } from "@mui/material";
+/* ButtonContainer should have its own css styling instead of 
+being mixed with the main code.*/
 
 export default function ButtonContainer({ onButton, onClear }) {
   return (
     <>
       <div className="btn-container">
         <div className="numeric-btn-container">
+          {/* ButtonGroup is repeated multiple times I would recommend a
+           mapping function that loops over an array of buttons, 
+           to limit repeating yourself */}
           <ButtonGroup
             variant="contained"
             color="primary"
@@ -67,6 +72,8 @@ export default function ButtonContainer({ onButton, onClear }) {
         </ButtonGroup>
       </div>
       <div className="calculator-controls">
+        {/* Because the delete button has no function 
+        I would recommend removing it until theres functionality */}
         <Button variant="contained" color="warning">
           Delete
         </Button>
