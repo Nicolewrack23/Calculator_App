@@ -1,5 +1,6 @@
 import { Button, ButtonGroup } from "@mui/material";
-// ButtonContainer should have its own css styling instead of being mixed with the main code.
+/* ButtonContainer should have its own css styling instead of 
+being mixed with the main code.*/
 
 export default function ButtonContainer({ onButton, onClear }) {
   return (
@@ -71,7 +72,8 @@ export default function ButtonContainer({ onButton, onClear }) {
         </ButtonGroup>
       </div>
       <div className="calculator-controls">
-        {/* on function on button Delete should be removed or add a function */}
+        {/* Because the delete button has no function 
+        I would recommend removing it until theres functionality */}
         <Button variant="contained" color="warning">
           Delete
         </Button>
