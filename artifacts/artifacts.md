@@ -82,3 +82,9 @@ Buttons are in thumb zone, output is out of thumb zone you only want to view the
 The main use of the calculator is to do an equation there for everything we need to do that as easily accessible.
 
 The secondary use is to view the history of a past calculation so we have added this up the top of the screen in the hard/stretching area of the screen.
+
+## Changes to design
+
+we have decided to change our clear or "C" button to an backspace button of our choice as there was confusion with the clear and found out that it was actually a backspace button we needed to implement.
+
+![First draft wireframe](./updatedFinalDesign.png)
