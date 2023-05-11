@@ -1,9 +1,10 @@
 import { Pressable, Text, StyleSheet } from "react-native";
 
 const buttons = ({ value, onButtonPress }) => {
+  console.log("buttons " + value);
   return (
     <Pressable style={styles.buttons} onPress={onButtonPress}>
-      <Text style={styles.value}>1</Text>
+      <Text style={styles.value}>{value}</Text>
     </Pressable>
   );
 };
