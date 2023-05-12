@@ -18,7 +18,6 @@ const Display = () => {
     "0",
     ".",
   ];
-  console.log("display " + value);
   return (
     <>
       <View style={styles.ButtonContainer}>
