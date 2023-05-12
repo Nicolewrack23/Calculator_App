@@ -1,46 +1,65 @@
 import { Pressable, Text, StyleSheet } from "react-native";
 
 const buttons = ({ value, rightValue, onButtonPress }) => {
-  const secondaryButtons = ("/", "X", "+", "-");
-  if (value === secondaryButtons || rightValue === secondaryButtons) {
-    console.log("hello" + secondaryButtons);
-    console.log("hello" + secondaryButtons);
-  }
-  if (value) {
-    if (value === "0") {
-      return (
-        <Pressable
-          style={[styles.buttons, styles.zeroButton]}
-          onPress={onButtonPress}
-        >
-          <Text style={styles.zero}>{value}</Text>
-        </Pressable>
-      );
-    }
-    return (
-      <Pressable style={styles.buttons} onPress={onButtonPress}>
-        <Text style={styles.value}>{value}</Text>
-      </Pressable>
-    );
-  }
-  if (rightValue) {
-    if (rightValue === "=") {
-      return (
-        <Pressable
-          style={[styles.buttons, styles.equalButton]}
-          onPress={onButtonPress}
-        >
-          <Text style={styles.value}>{rightValue}</Text>
-        </Pressable>
-      );
-    }
-    return (
-      <Pressable style={styles.rightButtons} onPress={onButtonPress}>
-        <Text style={styles.value}>{rightValue}</Text>
-      </Pressable>
-    );
-  }
+  const operator =
+    value === "/" ||
+    rightValue === "+" ||
+    rightValue === "-" ||
+    rightValue === "X";
+
+  return (
+    <Pressable
+      style={[
+        value && styles.buttons,
+        rightValue && styles.rightButtons,
+        operator && styles.blueButton,
+        value === "0" && styles.zeroButton,
+      ]}
+      onPress={onButtonPress}
+    >
+      <Text style={styles.value}>{value || rightValue}</Text>
+    </Pressable>
+  );
 };
+
+//   if (rightValue === operator) {
+//     console.log(operator);
+//   }
+//   if (value) {
+//     if (value === "0") {
+//       return (
+//         <Pressable
+//           style={[styles.buttons, styles.zeroButton]}
+//           onPress={onButtonPress}
+//         >
+//           <Text style={styles.zero}>{value}</Text>
+//         </Pressable>
+//       );
+//     }
+//     return (
+//       <Pressable style={styles.buttons} onPress={onButtonPress}>
+//         <Text style={styles.value}>{value}</Text>
+//       </Pressable>
+//     );
+//   }
+//   if (rightValue) {
+//     if (rightValue === "=") {
+//       return (
+//         <Pressable
+//           style={[styles.buttons, styles.equalButton]}
+//           onPress={onButtonPress}
+//         >
+//           <Text style={styles.value}>{rightValue}</Text>
+//         </Pressable>
+//       );
+//     }
+//     return (
+//       <Pressable style={styles.rightButtons} onPress={onButtonPress}>
+//         <Text style={styles.value}>{rightValue}</Text>
+//       </Pressable>
+//     );
+//   }
+// };
 export default buttons;
 
 const styles = StyleSheet.create({
@@ -78,5 +97,8 @@ const styles = StyleSheet.create({
   zero: {
     color: "#000",
     fontSize: 30,
+  },
+  blueButton: {
+    backgroundColor: "blue",
   },
 });
