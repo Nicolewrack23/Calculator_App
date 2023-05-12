@@ -2,6 +2,7 @@ import { View, StyleSheet } from "react-native";
 import Buttons from "./ButtonContainer";
 
 const Display = () => {
+  const rightValues = ["X", "-", "+", "="];
   const value = [
     "AC",
     "C",
@@ -20,14 +21,25 @@ const Display = () => {
   ];
   return (
     <>
-      <View style={styles.ButtonContainer}>
-        {value.map((buttonValue) => (
-          <Buttons
-            key={buttonValue}
-            value={buttonValue}
-            onButtonPress={() => handleClick(buttonValue)}
-          />
-        ))}
+      <View style={styles.container}>
+        <View style={styles.ButtonContainer}>
+          {value.map((buttonValue) => (
+            <Buttons
+              key={buttonValue}
+              value={buttonValue}
+              onButtonPress={() => handleClick(buttonValue)}
+            />
+          ))}
+        </View>
+        <View style={styles.buttonRightContainer}>
+          {rightValues.map((buttonRightValue) => (
+            <Buttons
+              key={buttonRightValue}
+              rightValue={buttonRightValue}
+              onButtonPress={() => handleClick(buttonRightValue)}
+            />
+          ))}
+        </View>
       </View>
     </>
   );
@@ -35,12 +47,23 @@ const Display = () => {
 export default Display;
 
 const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+  },
   ButtonContainer: {
     display: "flex",
+    flex: 2,
     flexWrap: "wrap",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 10,
+    paddingLeft: 10,
+  },
+  buttonRightContainer: {
+    display: "flex",
+    width: "25%",
+    flexDirection: "column",
+    paddingRight: 10,
   },
 });
