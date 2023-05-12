@@ -1,8 +1,12 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 const ShowCalculation = ({ buttonClicked }) => {
   console.log(buttonClicked);
 
-  return <Text>hello {buttonClicked}</Text>;
+  return (
+    <View>
+      <Text>hello {buttonClicked}</Text>
+    </View>
+  );
 };
 export default ShowCalculation;
