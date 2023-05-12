@@ -14,6 +14,7 @@ const buttons = ({ value, rightValue, onButtonPress }) => {
         rightValue && styles.rightButtons,
         operator && styles.blueButton,
         value === "0" && styles.zeroButton,
+        rightValue === "=" && styles.equalButton,
       ]}
       onPress={onButtonPress}
     >
@@ -21,45 +22,6 @@ const buttons = ({ value, rightValue, onButtonPress }) => {
     </Pressable>
   );
 };
-
-//   if (rightValue === operator) {
-//     console.log(operator);
-//   }
-//   if (value) {
-//     if (value === "0") {
-//       return (
-//         <Pressable
-//           style={[styles.buttons, styles.zeroButton]}
-//           onPress={onButtonPress}
-//         >
-//           <Text style={styles.zero}>{value}</Text>
-//         </Pressable>
-//       );
-//     }
-//     return (
-//       <Pressable style={styles.buttons} onPress={onButtonPress}>
-//         <Text style={styles.value}>{value}</Text>
-//       </Pressable>
-//     );
-//   }
-//   if (rightValue) {
-//     if (rightValue === "=") {
-//       return (
-//         <Pressable
-//           style={[styles.buttons, styles.equalButton]}
-//           onPress={onButtonPress}
-//         >
-//           <Text style={styles.value}>{rightValue}</Text>
-//         </Pressable>
-//       );
-//     }
-//     return (
-//       <Pressable style={styles.rightButtons} onPress={onButtonPress}>
-//         <Text style={styles.value}>{rightValue}</Text>
-//       </Pressable>
-//     );
-//   }
-// };
 export default buttons;
 
 const styles = StyleSheet.create({
