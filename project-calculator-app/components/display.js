@@ -1,7 +1,10 @@
 import { View, StyleSheet } from "react-native";
 import Buttons from "./ButtonContainer";
+import ShowCalculation from "./ShowCalculation";
+import { useState } from "react";
 
 const Display = () => {
+  const [buttons, setButtons] = useState("");
   const rightValues = ["X", "-", "+", "="];
   const value = [
     "AC",
@@ -19,8 +22,17 @@ const Display = () => {
     "0",
     ".",
   ];
+
+  const handleClick = (buttonValue) => {
+    if (buttonValue) {
+      console.log(buttonValue);
+      setButtons([...buttons, buttonValue]);
+    }
+  };
+
   return (
     <>
+      <ShowCalculation buttonClicked={buttons} />
       <View style={styles.container}>
         <View style={styles.ButtonContainer}>
           {value.map((buttonValue) => (
