@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Buttons from "./ButtonContainer";
 
 const Display = () => {
@@ -21,7 +21,7 @@ const Display = () => {
   console.log("display " + value);
   return (
     <>
-      <View style>
+      <View style={styles.ButtonContainer}>
         {value.map((buttonValue) => (
           <Buttons
             key={buttonValue}
@@ -34,3 +34,14 @@ const Display = () => {
   );
 };
 export default Display;
+
+const styles = StyleSheet.create({
+  ButtonContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 10,
+  },
+});
