@@ -4,7 +4,7 @@ import ShowCalculation from "./ShowCalculation";
 import { useState } from "react";
 
 const Display = () => {
-  const [buttons, setButtons] = useState("");
+  const [buttons, setButtons] = useState("0");
   const rightValues = ["X", "-", "+", "="];
   const value = [
     "AC",
