@@ -7,7 +7,7 @@ const ShowCalculation = ({ buttonClicked }) => {
     <>
       <View style={styles.row1}>
         <Text style={styles.calculation}>{buttonClicked}</Text>
-        <Text style={[styles.working]}>{buttonClicked}</Text>
+        <Text style={styles.working}>{buttonClicked}</Text>
       </View>
     </>
   );
