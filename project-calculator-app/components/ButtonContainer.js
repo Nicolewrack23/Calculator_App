@@ -10,8 +10,8 @@ const buttons = ({ value, rightValue, onButtonPress }) => {
   return (
     <Pressable
       style={[
-        value && styles.buttons,
-        rightValue && styles.rightButtons,
+        value && [styles.buttons, styles.leftButtons],
+        rightValue && styles.buttons,
         operator && styles.secondaryColor,
         value === "0" && styles.zeroButton,
         value === "AC" && styles.allClearButton,
@@ -36,7 +36,6 @@ export default buttons;
 
 const styles = StyleSheet.create({
   buttons: {
-    flexBasis: "31%",
     display: "flex",
     borderRadius: 20,
     backgroundColor: "#DBD8AE",
@@ -45,14 +44,8 @@ const styles = StyleSheet.create({
     margin: 2,
     padding: 20,
   },
-  rightButtons: {
-    display: "flex",
-    borderRadius: 20,
-    backgroundColor: "#DBD8AE",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 2,
-    padding: 20,
+  leftButtons: {
+    flexBasis: "31%",
   },
   value: {
     color: "#000",
