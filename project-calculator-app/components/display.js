@@ -2,6 +2,7 @@ import { View, StyleSheet } from "react-native";
 import Buttons from "./ButtonContainer";
 import ShowCalculation from "./ShowCalculation";
 import { useState } from "react";
+import calculateResult from "./Calculate";
 
 const Display = () => {
   const [buttons, setButtons] = useState("0");
@@ -25,8 +26,8 @@ const Display = () => {
 
   const handleClick = (buttonValue) => {
     if (buttonValue) {
-      console.log(buttonValue);
-      setButtons([...buttons, buttonValue]);
+      calculateResult(buttonValue);
+      // setButtons([...buttons, buttonValue]);
     }
   };
 
