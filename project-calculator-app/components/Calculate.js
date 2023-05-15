@@ -3,6 +3,8 @@ let operator = null;
 let firstNumber = null;
 let secondNumber = "";
 let result = "";
+let firstOperand;
+let secondOperand;
 
 const calculateNumbers = (buttonValue) => {
   if (isOperator(buttonValue)) {
@@ -18,18 +20,43 @@ const calculateNumbers = (buttonValue) => {
   }
   if (buttonValue !== "=") {
     buttons = buttons + buttonValue;
-    console.log(buttons);
   } else {
     calculateResult();
+    buttons = "";
+    operator = null;
+    firstNumber = null;
+    secondNumber = "";
   }
 };
 
 const calculateResult = () => {
-  if (operator === "+") {
-    const firstOperand = Number(firstNumber);
-    const secondOperand = Number(secondNumber);
-    result = firstOperand + secondOperand;
-    console.log("Result: " + result);
+  switch (operator) {
+    case "+":
+      firstOperand = Number(firstNumber);
+      secondOperand = Number(secondNumber);
+      result = firstOperand + secondOperand;
+      console.log("Result: " + result);
+      break;
+    case "-":
+      firstOperand = Number(firstNumber);
+      secondOperand = Number(secondNumber);
+      result = firstOperand - secondOperand;
+      console.log("Result: " + result);
+      break;
+    case "X":
+      firstOperand = Number(firstNumber);
+      secondOperand = Number(secondNumber);
+      result = firstOperand * secondOperand;
+      console.log("Result: " + result);
+      break;
+    case "/":
+      firstOperand = Number(firstNumber);
+      secondOperand = Number(secondNumber);
+      result = firstOperand / secondOperand;
+      console.log("Result: " + result);
+      break;
+    default:
+      console.log(`Sorry, wrong operator: ${operator}.`);
   }
 };
 
