@@ -5,7 +5,8 @@ import { useState } from "react";
 import calculateResult from "./Calculate";
 
 const Display = () => {
-  const [buttons, setButtons] = useState("0");
+  const [buttons, setButtons] = useState(" ");
+
   const rightValues = ["X", "-", "+", "="];
   const value = [
     "AC",
@@ -25,10 +26,7 @@ const Display = () => {
   ];
 
   const handleClick = (buttonValue) => {
-    if (buttonValue) {
-      calculateResult(buttonValue);
-      // setButtons([...buttons, buttonValue]);
-    }
+    calculateResult(buttonValue);
   };
 
   return (
