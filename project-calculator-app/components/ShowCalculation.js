@@ -16,7 +16,7 @@ export default ShowCalculation;
 
 const styles = StyleSheet.create({
   row1: {
-    justifyContent: "end",
+    justifyContent: "flex-end",
     alignItems: "center",
     width: "100%",
   },
