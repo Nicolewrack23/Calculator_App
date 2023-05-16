@@ -1,12 +1,13 @@
 import { Text, View, StyleSheet } from "react-native";
 
-const ShowCalculation = ({ buttonClicked }) => {
-  console.log(buttonClicked);
+const ShowCalculation = ({ buttonClicked, History }) => {
+  console.log("buttonClicked" + buttonClicked);
+  console.log("History" + History);
 
   return (
     <>
       <View style={styles.row1}>
-        <Text style={styles.calculation}>{buttonClicked}</Text>
+        <Text style={styles.calculation}>{History}</Text>
         <Text style={styles.working}>{buttonClicked}</Text>
       </View>
     </>
