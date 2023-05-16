@@ -2,7 +2,7 @@ import { View, StyleSheet } from "react-native";
 import Buttons from "./ButtonContainer";
 import ShowCalculation from "./ShowCalculation";
 import { useState, useEffect } from "react";
-// import calculateResult from "./Calculate";
+import calculateResult from "./Calculate";
 
 const Display = () => {
   const [operationDisplay, setOperationDisplay] = useState("");
@@ -45,10 +45,9 @@ const Display = () => {
       }
     } else if (isSecondOperand(buttonValue)) {
       if (buttonValue === "=") {
-        calculateResult();
+        const equation = calculateResult(firstOperand, operator, secondOperand);
         setEquals(true);
-        setHistory(`${firstOperand}${operator}${secondOperand}=${result}`);
-        console.log("saved " + history);
+        saveHistory(equation);
         clearStates();
       } else if (buttonValue === "." && secondPeriod) {
         return;
@@ -63,6 +62,10 @@ const Display = () => {
     }
   };
 
+  const saveHistory = (equation) => {
+    setHistory(equation);
+  };
+
   const isFirstOperand = (buttonValue) => {
     return !operator && !isOperator(buttonValue);
   };
@@ -75,13 +78,9 @@ const Display = () => {
     return (
       buttonValue === "+" ||
       buttonValue === "-" ||
-      buttonValue === "*" ||
+      buttonValue === "X" ||
       buttonValue === "/"
     );
-  };
-
-  const calculateResult = () => {
-    setResult(Number(firstOperand) + Number(secondOperand));
   };
 
   const clearStates = () => {
