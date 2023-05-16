@@ -11,14 +11,14 @@ const calculateResult = (firstOperand, operator, secondOperand) => {
       firstNumber = Number(firstOperand);
       secondNumber = Number(secondOperand);
       result = firstNumber + secondNumber;
-      equation = `${firstOperand}${operator}${secondOperand}=${result} `;
+      equation = `${firstOperand}${operator}${secondOperand}=${result}`;
       console.log("Result calculate +: " + equation);
       return equation;
     case "-":
       firstNumber = Number(firstOperand);
       secondNumber = Number(secondOperand);
       result = firstNumber - secondNumber;
-      equation = `${firstOperand}${operator}${secondOperand}=${result} `;
+      equation = `${firstOperand}${operator}${secondOperand}=${result}`;
       console.log("Result calculate -: " + equation);
       return equation;
 
@@ -26,7 +26,7 @@ const calculateResult = (firstOperand, operator, secondOperand) => {
       firstNumber = Number(firstOperand);
       secondNumber = Number(secondOperand);
       result = firstNumber * secondNumber;
-      equation = `${firstOperand}${operator}${secondOperand}=${result} `;
+      equation = `${firstOperand}${operator}${secondOperand}=${result}`;
       console.log("Result calculate *: " + equation);
       return equation;
 
@@ -34,7 +34,7 @@ const calculateResult = (firstOperand, operator, secondOperand) => {
       firstNumber = Number(firstOperand);
       secondNumber = Number(secondOperand);
       result = firstNumber / secondNumber;
-      equation = `${firstOperand}${operator}${secondOperand}=${result} `;
+      equation = `${firstOperand}${operator}${secondOperand}=${result}`;
       console.log("Result calculate /: " + equation);
       return equation;
     default:
