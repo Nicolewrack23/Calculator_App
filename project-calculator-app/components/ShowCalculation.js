@@ -1,9 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 
 const ShowCalculation = ({ buttonClicked, History }) => {
-  console.log("buttonClicked" + buttonClicked);
-  console.log("History" + History);
-
   return (
     <>
       <View style={styles.row1}>
