@@ -46,8 +46,10 @@ const Display = () => {
     } else if (isSecondOperand(buttonValue)) {
       if (buttonValue === "=") {
         const equation = calculateResult(firstOperand, operator, secondOperand);
+        console.log(equation);
+        setResult(equation[1]);
         setEquals(true);
-        saveHistory(equation);
+        saveHistory(equation[0]);
         clearStates();
       } else if (buttonValue === "." && secondPeriod) {
         return;
