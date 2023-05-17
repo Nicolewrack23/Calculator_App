@@ -90,7 +90,7 @@ describe("calculate the results", () => {
     firstOperand | operator | secondOperand | expected
     ${"96,32.3"} | ${"/"}   | ${"65.432"}   | ${"Error: Invalid input"}
     ${"96,32.3"} | ${"X"}   | ${"65.432"}   | ${"Error: Invalid input"}
-    ${"10.23.4"} | ${"X"}   | ${"45.67.7"}  | ${"Error: Invalid input"}
+    ${"10h"}     | ${"X"}   | ${"45.67.7"}  | ${"Error: Invalid input"}
     ${"9.54.5"}  | ${"+"}   | ${"7.456"}    | ${"Error: Invalid input"}
     ${"12.54.2"} | ${"-"}   | ${"65.432"}   | ${"Error: Invalid input"}
     ${"15.52"}   | ${"+"}   | ${"hello"}    | ${"Error: Invalid input"}
