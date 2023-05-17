@@ -1,39 +1,31 @@
-let firstNumber;
-let secondNumber;
 let result;
 let equation;
 
 const calculateResult = (firstOperand, operator, secondOperand) => {
+  let firstNumber = Number(firstOperand);
+  let secondNumber = Number(secondOperand);
+
+  if (isNaN(firstNumber) || isNaN(secondNumber)) {
+    return ["Error: Invalid input", "Error"];
+  }
   switch (operator) {
     case "+":
-      firstNumber = Number(firstOperand);
-      secondNumber = Number(secondOperand);
       result = +(firstNumber + secondNumber).toFixed(2);
       equation = `${firstOperand}${operator}${secondOperand}=${result}`;
-      console.log("Result calculate +: " + equation);
       return [equation, result];
     case "-":
-      firstNumber = Number(firstOperand);
-      secondNumber = Number(secondOperand);
       result = +(firstNumber - secondNumber).toFixed(2);
       equation = `${firstOperand}${operator}${secondOperand}=${result}`;
-      console.log("Result calculate -: " + equation);
       return [equation, result];
 
     case "X":
-      firstNumber = Number(firstOperand);
-      secondNumber = Number(secondOperand);
       result = +(firstNumber * secondNumber).toFixed(2);
       equation = `${firstOperand}${operator}${secondOperand}=${result}`;
-      console.log("Result calculate *: " + equation);
       return [equation, result];
 
     case "/":
-      firstNumber = Number(firstOperand);
-      secondNumber = Number(secondOperand);
       result = +(firstNumber / secondNumber).toFixed(2);
       equation = `${firstOperand}${operator}${secondOperand}=${result}`;
-      console.log("Result calculate /: " + equation);
       return [equation, result];
     default:
       console.log(`Sorry, wrong operator: ${operator}.`);
