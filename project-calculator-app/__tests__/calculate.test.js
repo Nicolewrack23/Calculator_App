@@ -17,7 +17,7 @@ describe("calculate the results", () => {
   );
   test.each`
     firstOperand | operator | secondOperand | expected
-    ${"5"}       | ${"-"}   | ${"2"}        | ${3}
+    ${"2"}       | ${"-"}   | ${"3"}        | ${-1}
     ${"34"}      | ${"-"}   | ${"24"}       | ${10}
     ${"2.1"}     | ${"-"}   | ${"1.2"}      | ${0.9}
     ${"8.65"}    | ${"-"}   | ${"6.55"}     | ${2.1}
