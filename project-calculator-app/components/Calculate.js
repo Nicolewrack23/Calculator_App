@@ -25,10 +25,14 @@ const calculateResult = (firstOperand, operator, secondOperand) => {
 
     case "/":
       result = +(firstNumber / secondNumber).toFixed(2);
-      equation = `${firstOperand}${operator}${secondOperand}=${result}`;
-      return [equation, result];
+      if (result === Infinity) {
+        return [`Not devisable by ${secondNumber}`, `Error`];
+      } else {
+        equation = `${firstOperand}${operator}${secondOperand}=${result}`;
+        return [equation, result];
+      }
     default:
-      console.log(`Sorry, wrong operator: ${operator}.`);
+      return ["Error: wrong operator", "Error"];
   }
 };
 
