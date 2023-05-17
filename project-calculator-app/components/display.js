@@ -1,10 +1,20 @@
 import { View, StyleSheet } from "react-native";
 import Buttons from "./ButtonContainer";
 import ShowCalculation from "./ShowCalculation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import calculateResult from "./Calculate";
 
 const Display = () => {
-  const [buttons, setButtons] = useState("0");
+  const [operationDisplay, setOperationDisplay] = useState("");
+  const [firstOperand, setFirstOperand] = useState("");
+  const [secondOperand, setSecondOperand] = useState("");
+  const [operator, setOperator] = useState("");
+  const [result, setResult] = useState("");
+  const [firstPeriod, setFirstPeriod] = useState(false);
+  const [secondPeriod, setSecondPeriod] = useState(false);
+  const [equals, setEquals] = useState(false);
+  const [history, setHistory] = useState("");
+
   const rightValues = ["X", "-", "+", "="];
   const value = [
     "AC",
@@ -24,15 +34,80 @@ const Display = () => {
   ];
 
   const handleClick = (buttonValue) => {
-    if (buttonValue) {
-      console.log(buttonValue);
-      setButtons([...buttons, buttonValue]);
+    if (isFirstOperand(buttonValue)) {
+      if (buttonValue === "=" || (buttonValue === "." && firstPeriod)) {
+        return;
+      } else {
+        setFirstOperand((previousValue) => previousValue + buttonValue);
+        if (buttonValue === "." && !firstPeriod) {
+          setFirstPeriod(true);
+        }
+      }
+    } else if (isSecondOperand(buttonValue)) {
+      if (buttonValue === "=") {
+        const equation = calculateResult(firstOperand, operator, secondOperand);
+        console.log(equation);
+        setResult(equation[1]);
+        setEquals(true);
+        saveHistory(equation[0]);
+        clearStates();
+      } else if (buttonValue === "." && secondPeriod) {
+        return;
+      } else {
+        setSecondOperand((previousValue) => previousValue + buttonValue);
+        if (buttonValue === "." && !secondPeriod) {
+          setSecondPeriod(true);
+        }
+      }
+    } else {
+      setOperator(buttonValue);
     }
   };
 
+  const saveHistory = (equation) => {
+    setHistory(equation);
+  };
+
+  const isFirstOperand = (buttonValue) => {
+    return !operator && !isOperator(buttonValue);
+  };
+
+  const isSecondOperand = (buttonValue) => {
+    return operator && !isOperator(buttonValue);
+  };
+
+  const isOperator = (buttonValue) => {
+    return (
+      buttonValue === "+" ||
+      buttonValue === "-" ||
+      buttonValue === "X" ||
+      buttonValue === "/"
+    );
+  };
+
+  const clearStates = () => {
+    setFirstOperand("");
+    setSecondOperand("");
+    setOperator("");
+    setFirstPeriod(false);
+    setSecondPeriod(false);
+  };
+
+  useEffect(() => {
+    let displayValue = " ";
+
+    if (firstOperand) {
+      displayValue = `${firstOperand}${operator}${secondOperand}`;
+    } else if (equals) {
+      displayValue = `${firstOperand}${operator}${secondOperand}=${result}`;
+    }
+
+    setOperationDisplay(displayValue);
+  }, [firstOperand, operator, secondOperand, equals, result]);
+
   return (
     <>
-      <ShowCalculation buttonClicked={buttons} />
+      <ShowCalculation buttonClicked={operationDisplay} History={history} />
       <View style={styles.container}>
         <View style={styles.ButtonContainer}>
           {value.map((buttonValue) => (
