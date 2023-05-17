@@ -78,12 +78,18 @@ const Display = () => {
     } else if (buttonValue === "C") {
       if (isSecondOperand()) {
         if (secondOperand.length > 0) {
+          if (lastNumber === ".") {
+            setSecondPeriod(false);
+          }
           setSecondOperand((previousValue) => previousValue.slice(0, -1));
         } else {
           setOperator("");
         }
       } else if (isFirstOperand()) {
         if (firstOperand.length > 0) {
+          if (lastNumber === ".") {
+            setFirstPeriod(false);
+          }
           setFirstOperand((previousValue) => previousValue.slice(0, -1));
         } else {
           setHistory("");
@@ -126,7 +132,12 @@ const Display = () => {
 
   useEffect(() => {
     let displayValue = " ";
-
+    if (firstOperand.length > 0) {
+      setLastNumber(firstOperand.slice(-1));
+    }
+    if (secondOperand.length > 0) {
+      setLastNumber(secondOperand.slice(-1));
+    }
     if (firstOperand) {
       displayValue = `${firstOperand}${operator}${secondOperand}`;
     } else if (equals) {
