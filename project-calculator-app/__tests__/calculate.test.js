@@ -3,7 +3,7 @@ import calculateResult from "../components/Calculate";
 describe("calculate the results", () => {
   test.each`
     firstOperand | operator | secondOperand | expected
-    ${"1"}       | ${"+"}   | ${"2"}        | ${3}
+    ${"1"}       | ${"+"}   | ${""}         | ${1}
     ${"12"}      | ${"+"}   | ${"24"}       | ${36}
     ${"1.1"}     | ${"+"}   | ${"2.2"}      | ${3.3}
     ${"9.54"}    | ${"+"}   | ${"6.45"}     | ${15.99}
@@ -105,4 +105,12 @@ describe("calculate the results", () => {
       expect(result[0]).toBe(expected);
     }
   );
+  test("secondOperand should handle as a zero", () => {
+    const firstOperand = "1";
+    const operator = "+";
+    const secondOperand = "";
+    const expected = 1;
+    const result = calculateResult(firstOperand, operator, secondOperand);
+    expect(result[1]).toBe(expected);
+  });
 });
