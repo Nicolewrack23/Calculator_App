@@ -70,7 +70,7 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("="));
     expect(getByText("1+8=9")).toBeTruthy();
   });
-  test(`Should removed characters from the first operand and allow to reenter the "."`, () => {
+  test(`Should remove characters from the first operand and allow to reenter the "."`, () => {
     const { getByText } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("."));
@@ -80,7 +80,7 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("8"));
     expect(getByText("19.8")).toBeTruthy();
   });
-  test(`Should removed characters from the second operand and allow to reenter the "."`, () => {
+  test(`Should remove characters from the second operand and allow to reenter the "."`, () => {
     const { getByText } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
@@ -92,7 +92,7 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("8"));
     expect(getByText("1+78.8")).toBeTruthy();
   });
-  test(`Should removed operator and allow to reenter the at a different point`, () => {
+  test(`Should remove operator and allow to reenter at a different point`, () => {
     const { getByText } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
@@ -102,7 +102,7 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("8"));
     expect(getByText("18+8")).toBeTruthy();
   });
-  test(`Allow removing and reentering operators, and changing operators after reentry.`, () => {
+  test(`Allow removing and reentering operators and changing operators after reentry.`, () => {
     const { getByText } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
@@ -113,7 +113,7 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("X"));
     expect(getByText("18X8")).toBeTruthy();
   });
-  test("should clear the entire display area when DELETE button is pressed after a calculation", () => {
+  test("should clear the entire display area when the clear button is pressed after a calculation", () => {
     const { queryByText, getByText } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
