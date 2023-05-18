@@ -104,7 +104,7 @@ const Display = () => {
   const saveHistory = async (equation) => {
     console.log("hist" + equation);
     setHistory(equation);
-    storeData(equation);
+    await storeData(equation);
     const storedData = await getData();
     console.log("Retrieved data:", storedData);
   };
