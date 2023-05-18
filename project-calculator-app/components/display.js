@@ -14,6 +14,7 @@ const Display = () => {
   const [secondPeriod, setSecondPeriod] = useState(false);
   const [equals, setEquals] = useState(false);
   const [history, setHistory] = useState("");
+  const [lastNumber, setLastNumber] = useState("");
 
   const rightValues = ["X", "-", "+", "="];
   const value = [
@@ -34,8 +35,15 @@ const Display = () => {
   ];
 
   const handleClick = (buttonValue) => {
+    if (buttonValue === "AC" || buttonValue === "C") {
+      handleSpecialButton(buttonValue);
+    }
     if (isFirstOperand(buttonValue)) {
-      if (buttonValue === "=" || (buttonValue === "." && firstPeriod)) {
+      if (
+        buttonValue === "=" ||
+        (buttonValue === "." && firstPeriod) ||
+        buttonValue === "C"
+      ) {
         return;
       } else {
         setFirstOperand((previousValue) => previousValue + buttonValue);
@@ -51,7 +59,7 @@ const Display = () => {
         setEquals(true);
         saveHistory(equation[0]);
         clearStates();
-      } else if (buttonValue === "." && secondPeriod) {
+      } else if ((buttonValue === "." && secondPeriod) || buttonValue === "C") {
         return;
       } else {
         setSecondOperand((previousValue) => previousValue + buttonValue);
@@ -61,6 +69,35 @@ const Display = () => {
       }
     } else {
       setOperator(buttonValue);
+    }
+  };
+  const handleSpecialButton = (buttonValue) => {
+    if (buttonValue === "AC") {
+      // Handle AC button
+      resetCalculator();
+    } else if (buttonValue === "C") {
+      if (isSecondOperand()) {
+        if (secondOperand.length > 0) {
+          if (lastNumber === ".") {
+            setSecondPeriod(false);
+          }
+          setSecondOperand((previousValue) => previousValue.slice(0, -1));
+        } else {
+          setOperator("");
+        }
+      } else if (isFirstOperand()) {
+        if (firstOperand.length > 0) {
+          if (lastNumber === ".") {
+            setFirstPeriod(false);
+          }
+          setFirstOperand((previousValue) => previousValue.slice(0, -1));
+        } else {
+          setHistory("");
+          setOperationDisplay(" ");
+        }
+      } else if (isOperator()) {
+        setOperator("");
+      }
     }
   };
 
@@ -95,7 +132,12 @@ const Display = () => {
 
   useEffect(() => {
     let displayValue = " ";
-
+    if (firstOperand.length > 0) {
+      setLastNumber(firstOperand.slice(-1));
+    }
+    if (secondOperand.length > 0) {
+      setLastNumber(secondOperand.slice(-1));
+    }
     if (firstOperand) {
       displayValue = `${firstOperand}${operator}${secondOperand}`;
     } else if (equals) {
