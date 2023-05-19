@@ -24,3 +24,13 @@ export const getData = async () => {
     console.log("Error getting data:", error);
   }
 };
+
+export const clearData = async () => {
+  try {
+    console.log("storage: AC");
+    await AsyncStorage.clear();
+  } catch (e) {
+    // error reading value
+  }
+  console.log("Done.");
+};
