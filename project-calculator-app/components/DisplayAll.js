@@ -3,7 +3,7 @@ import Buttons from "./ButtonContainer";
 import ShowCalculation from "./ShowCalculation";
 import { useState, useEffect } from "react";
 import calculateResult from "./Calculate";
-import { storeData, getData } from "./LocalStorage";
+import { storeData, getData, clearData } from "./LocalStorage";
 
 const Display = () => {
   const [operationDisplay, setOperationDisplay] = useState("");
@@ -72,9 +72,12 @@ const Display = () => {
       setOperator(buttonValue);
     }
   };
-  const handleSpecialButton = (buttonValue) => {
+  const handleSpecialButton = async (buttonValue) => {
     if (buttonValue === "AC") {
-      // Handle AC button
+      console.log("AC" + buttonValue);
+      await clearData();
+      setHistory("");
+      setOperationDisplay(" ");
     } else if (buttonValue === "C") {
       if (isSecondOperand()) {
         if (secondOperand.length > 0) {
