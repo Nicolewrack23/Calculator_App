@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import Display from "./components/Display";
+import Display from "./components/DisplayAll";
 
 export default function App() {
   return (
