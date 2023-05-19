@@ -108,8 +108,6 @@ const Display = () => {
     console.log("hist" + equation);
     setHistory(equation);
     await storeData(equation);
-    const storedData = await getData();
-    console.log("Retrieved data:", storedData);
   };
 
   const isFirstOperand = (buttonValue) => {
