@@ -13,7 +13,7 @@ describe("calculate the results", () => {
     await storeData(equation);
 
     expect(AsyncStorage.setItem).toHaveBeenCalledWith(
-      "@storage_Key",
+      "@stored_Equations",
       JSON.stringify(expectedStoredData)
     );
   });
@@ -26,7 +26,7 @@ describe("calculate the results", () => {
 
     const result = await getData();
 
-    expect(AsyncStorage.getItem).toHaveBeenCalledWith("@storage_Key");
+    expect(AsyncStorage.getItem).toHaveBeenCalledWith("@stored_Equations");
     expect(result).toEqual(expectedData);
   });
 
@@ -36,7 +36,7 @@ describe("calculate the results", () => {
 
     const result = await getData();
 
-    expect(mockGetItem).toHaveBeenCalledWith("@storage_Key");
+    expect(mockGetItem).toHaveBeenCalledWith("@stored_Equations");
     expect(result).toEqual([]);
   });
 });

@@ -11,14 +11,14 @@ export const storeData = async (equation) => {
     const updatingEquations = [...storedEquations, equation];
 
     const jsonValue = JSON.stringify(updatingEquations);
-    await AsyncStorage.setItem("@storage_Key", jsonValue);
+    await AsyncStorage.setItem("@stored_Equations", jsonValue);
   } catch (error) {
     console.log("Error storing data:", error);
   }
 };
 export const getData = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem("@storage_Key");
+    const jsonValue = await AsyncStorage.getItem("@stored_Equations");
     return jsonValue != null ? JSON.parse(jsonValue) : [];
   } catch (error) {
     console.log("Error getting data:", error);
