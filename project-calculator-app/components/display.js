@@ -3,6 +3,7 @@ import Buttons from "./ButtonContainer";
 import ShowCalculation from "./ShowCalculation";
 import { useState, useEffect } from "react";
 import calculateResult from "./Calculate";
+import { storeData, getData } from "./LocalStorage";
 
 const Display = () => {
   const [operationDisplay, setOperationDisplay] = useState("");
@@ -42,7 +43,8 @@ const Display = () => {
       if (
         buttonValue === "=" ||
         (buttonValue === "." && firstPeriod) ||
-        buttonValue === "C"
+        buttonValue === "C" ||
+        buttonValue === "AC"
       ) {
         return;
       } else {
@@ -54,7 +56,6 @@ const Display = () => {
     } else if (isSecondOperand(buttonValue)) {
       if (buttonValue === "=") {
         const equation = calculateResult(firstOperand, operator, secondOperand);
-        console.log(equation);
         setResult(equation[1]);
         setEquals(true);
         saveHistory(equation[0]);
@@ -74,7 +75,6 @@ const Display = () => {
   const handleSpecialButton = (buttonValue) => {
     if (buttonValue === "AC") {
       // Handle AC button
-      resetCalculator();
     } else if (buttonValue === "C") {
       if (isSecondOperand()) {
         if (secondOperand.length > 0) {
@@ -101,8 +101,12 @@ const Display = () => {
     }
   };
 
-  const saveHistory = (equation) => {
+  const saveHistory = async (equation) => {
+    console.log("hist" + equation);
     setHistory(equation);
+    await storeData(equation);
+    const storedData = await getData();
+    console.log("Retrieved data:", storedData);
   };
 
   const isFirstOperand = (buttonValue) => {
