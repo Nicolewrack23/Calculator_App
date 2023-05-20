@@ -1,11 +1,23 @@
 import { Pressable, Text, StyleSheet } from "react-native";
+import { Feather } from "@expo/vector-icons";
 
-const buttons = ({ value, rightValue, onButtonPress }) => {
+const Buttons = ({ value, rightValue, onButtonPress }) => {
   const operator =
     value === "/" ||
     rightValue === "+" ||
     rightValue === "-" ||
     rightValue === "X";
+
+  let buttonContent = null;
+  if (value === "C") {
+    buttonContent = <Feather name="arrow-left" size={32} color="white" />;
+  } else {
+    buttonContent = (
+      <Text style={[styles.value, value === "AC" && styles.allClearButton]}>
+        {value || rightValue}
+      </Text>
+    );
+  }
 
   return (
     <Pressable
@@ -20,19 +32,11 @@ const buttons = ({ value, rightValue, onButtonPress }) => {
       ]}
       onPress={onButtonPress}
     >
-      <Text
-        style={[
-          styles.value,
-          value === "AC" && styles.allClearButton,
-          value === "C" && styles.backspaceButton,
-        ]}
-      >
-        {value || rightValue}
-      </Text>
+      {buttonContent}
     </Pressable>
   );
 };
-export default buttons;
+export default Buttons;
 
 const styles = StyleSheet.create({
   buttons: {
