@@ -15,7 +15,7 @@ const Display = () => {
   const [firstPeriod, setFirstPeriod] = useState(false);
   const [secondPeriod, setSecondPeriod] = useState(false);
   const [equals, setEquals] = useState(false);
-  const [history, setHistory] = useState("");
+  const [history, setHistory] = useState(" ");
   const [lastNumber, setLastNumber] = useState("");
   const [storedData, setStoredData] = useState([]);
 
@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
+    marginBottom: 10,
   },
   ButtonContainer: {
     display: "flex",
