@@ -23,7 +23,7 @@ const equationListAccordion = ({ storedData }) => {
           </View>
         </Pressable>
       </View>
-      <View>{arrayDataItems}</View>
+      <View style={styles.dropdown}>{arrayDataItems}</View>
     </View>
   );
 };
@@ -33,18 +33,28 @@ const styles = StyleSheet.create({
   accordionBox: {
     width: "95%",
     margin: 10,
+    backgroundColor: "#BA9D9F",
+    borderRadius: 5,
   },
   pressable: {
-    backgroundColor: "blue",
     padding: 10,
     paddingHorizontal: 15,
-    borderRadius: 5,
+
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   item: {
-    color: "white",
-    textAlign: "",
+    color: "black",
+    textAlign: "center",
+  },
+  dropdown: {
+    backgroundColor: "#BA9D9F",
+    position: "absolute",
+    top: 30,
+    zIndex: 1,
+    padding: 10,
+    width: "100%",
+    borderRadius: 5,
   },
 });
