@@ -2,7 +2,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const storeData = async (equation) => {
   try {
-    console.log("storage: " + equation);
     let storedEquations = await getData();
 
     if (!storedEquations) {
@@ -27,7 +26,6 @@ export const getData = async () => {
 
 export const clearData = async () => {
   try {
-    console.log("storage: AC");
     await AsyncStorage.clear();
   } catch (e) {
     // error reading value

@@ -77,7 +77,6 @@ const Display = () => {
 
   const handleSpecialButton = async (buttonValue) => {
     if (buttonValue === "AC") {
-      console.log("AC" + buttonValue);
       fetchData();
       await clearData();
       fetchData();
