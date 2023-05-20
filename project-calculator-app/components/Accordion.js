@@ -1,17 +1,27 @@
-import { View, Text, StyleSheet } from "react-native";
-import { getData } from "./LocalStorage";
+import { View, Text, Pressable, StyleSheet } from "react-native";
+import { useState } from "react";
 
 const equationListAccordion = ({ storedData }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const arrayDataItems = storedData.map((course, index) => (
     <Text key={index} style={styles.item}>
       {course}
     </Text>
   ));
 
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <View>
+    <View style={styles.accordionBox}>
       <View>
-        <Text style={styles.item}>Render List/Array of Items</Text>
+        <Pressable onPress={toggleAccordion}>
+          <View style={styles.pressable}>
+            <Text style={styles.item}>History</Text>
+            <Text style={styles.item}>{isOpen ? "x" : "☰"}</Text>
+          </View>
+        </Pressable>
       </View>
       <View>{arrayDataItems}</View>
     </View>
@@ -19,4 +29,20 @@ const equationListAccordion = ({ storedData }) => {
 };
 
 export default equationListAccordion;
-const styles = StyleSheet.create({ item: { color: "white" } });
+const styles = StyleSheet.create({
+  accordionBox: {
+    width: "90%",
+    margin: 10,
+  },
+  pressable: {
+    backgroundColor: "blue",
+    padding: 10,
+    borderRadius: 5,
+    flex: 1,
+  },
+  item: {
+    color: "white",
+    textAlign: "",
+    flexDirection: "column",
+  },
+});
