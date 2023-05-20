@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   pressable: {
-    padding: 20,
+    padding: 15,
     paddingHorizontal: 15,
     flexDirection: "row",
     justifyContent: "space-between",
