@@ -1,10 +1,11 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useState } from "react";
+import { AntDesign } from "@expo/vector-icons";
 
 const equationListAccordion = ({ storedData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const arrayDataItems = storedData.map((course, index) => (
-    <Text key={index} style={styles.item}>
+    <Text key={index} style={styles.textStyling}>
       {course}
     </Text>
   ));
@@ -18,12 +19,20 @@ const equationListAccordion = ({ storedData }) => {
       <View>
         <Pressable onPress={toggleAccordion}>
           <View style={styles.pressable}>
-            <Text style={styles.item}>History</Text>
-            <Text style={styles.item}>{isOpen ? "x" : "☰"}</Text>
+            <Text style={styles.textStyling}>History</Text>
+            <Text style={styles.textStyling}>
+              {isOpen ? (
+                <AntDesign name="up" size={24} color="black" />
+              ) : (
+                <AntDesign name="down" size={24} color="black" />
+              )}
+            </Text>
           </View>
         </Pressable>
       </View>
-      <View style={styles.dropdown}>{arrayDataItems}</View>
+      <View style={[styles.dropdown, isOpen ? styles.open : styles.closed]}>
+        {arrayDataItems}
+      </View>
     </View>
   );
 };
@@ -31,30 +40,36 @@ const equationListAccordion = ({ storedData }) => {
 export default equationListAccordion;
 const styles = StyleSheet.create({
   accordionBox: {
+    zIndex: 1,
     width: "95%",
     margin: 10,
+    marginTop: 20,
     backgroundColor: "#BA9D9F",
     borderRadius: 5,
   },
   pressable: {
-    padding: 10,
+    padding: 20,
     paddingHorizontal: 15,
-
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  item: {
-    color: "black",
+  textStyling: {
+    color: "#000",
     textAlign: "center",
+    fontSize: 24,
   },
   dropdown: {
     backgroundColor: "#BA9D9F",
     position: "absolute",
-    top: 30,
-    zIndex: 1,
+    top: 50,
     padding: 10,
     width: "100%",
     borderRadius: 5,
+  },
+  closed: {
+    display: "none",
+  },
+  open: {
+    display: "flex",
   },
 });
