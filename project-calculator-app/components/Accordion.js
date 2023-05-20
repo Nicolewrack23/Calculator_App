@@ -31,18 +31,20 @@ const equationListAccordion = ({ storedData }) => {
 export default equationListAccordion;
 const styles = StyleSheet.create({
   accordionBox: {
-    width: "90%",
+    width: "95%",
     margin: 10,
   },
   pressable: {
     backgroundColor: "blue",
     padding: 10,
+    paddingHorizontal: 15,
     borderRadius: 5,
     flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   item: {
     color: "white",
     textAlign: "",
-    flexDirection: "column",
   },
 });
