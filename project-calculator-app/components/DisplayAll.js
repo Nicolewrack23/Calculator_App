@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
-    marginBottom: 10,
+    marginBottom: 15,
   },
   ButtonContainer: {
     display: "flex",
