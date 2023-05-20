@@ -1,28 +1,22 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { View, Text, StyleSheet } from "react-native";
 import { getData } from "./LocalStorage";
 
-const EquationListAccordion = async () => {
-  const storedData = await getData();
-  console.log("Retrieved data:", storedData);
+const equationListAccordion = ({ storedData }) => {
+  const arrayDataItems = storedData.map((course, index) => (
+    <Text key={index} style={styles.item}>
+      {course}
+    </Text>
+  ));
+
   return (
-    <>
-      <Typography color="white">Current Calculation: </Typography>
-      <Accordion className="accordion">
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography backgroundColor="#BA9D9F">Past Calculations: </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          {storedData.map((equation) => (
-            <Typography key={equation}>{equation}</Typography>
-          ))}
-        </AccordionDetails>
-      </Accordion>
-    </>
+    <View>
+      <View>
+        <Text style={styles.item}>Render List/Array of Items</Text>
+      </View>
+      <View>{arrayDataItems}</View>
+    </View>
   );
 };
 
-export default EquationListAccordion;
+export default equationListAccordion;
+const styles = StyleSheet.create({ item: { color: "white" } });
