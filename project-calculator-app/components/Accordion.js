@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   textStyling: {
     color: "#000",
     textAlign: "center",
+    alignSelf: "center",
     fontSize: 24,
   },
   dropdown: {
