@@ -33,5 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 64,
     textAlign: "right",
     color: "#fff",
+    zIndex: 0,
   },
 });

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import Display from "../components/Display";
+import Display from "../components/DisplayAll";
 
 describe("Display component", () => {
   test("renders Game component without crashing", () => {
@@ -61,52 +61,52 @@ describe("Display component", () => {
 });
 describe("Clear button component", () => {
   test("Should remove the last entered character from the equation", () => {
-    const { getByText } = render(<Display />);
+    const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("9"));
-    fireEvent.press(getByText("C"));
+    fireEvent.press(getByTestId("C"));
     fireEvent.press(getByText("8"));
     fireEvent.press(getByText("="));
     expect(getByText("1+8=9")).toBeTruthy();
   });
   test(`Should remove characters from the first operand and allow to reenter the "."`, () => {
-    const { getByText } = render(<Display />);
+    const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("."));
-    fireEvent.press(getByText("C"));
+    fireEvent.press(getByTestId("C"));
     fireEvent.press(getByText("9"));
     fireEvent.press(getByText("."));
     fireEvent.press(getByText("8"));
     expect(getByText("19.8")).toBeTruthy();
   });
   test(`Should remove characters from the second operand and allow to reenter the "."`, () => {
-    const { getByText } = render(<Display />);
+    const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("7"));
     fireEvent.press(getByText("."));
-    fireEvent.press(getByText("C"));
+    fireEvent.press(getByTestId("C"));
     fireEvent.press(getByText("8"));
     fireEvent.press(getByText("."));
     fireEvent.press(getByText("8"));
     expect(getByText("1+78.8")).toBeTruthy();
   });
   test(`Should remove operator and allow to reenter at a different point`, () => {
-    const { getByText } = render(<Display />);
+    const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
-    fireEvent.press(getByText("C"));
+    fireEvent.press(getByTestId("C"));
     fireEvent.press(getByText("8"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("8"));
     expect(getByText("18+8")).toBeTruthy();
   });
   test(`Allow removing and reentering operators and changing operators after reentry.`, () => {
-    const { getByText } = render(<Display />);
+    const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
-    fireEvent.press(getByText("C"));
+    fireEvent.press(getByTestId("C"));
     fireEvent.press(getByText("8"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("8"));
@@ -114,13 +114,24 @@ describe("Clear button component", () => {
     expect(getByText("18X8")).toBeTruthy();
   });
   test("should clear the entire display area when the clear button is pressed after a calculation", () => {
-    const { queryByText, getByText } = render(<Display />);
+    const { queryByText, getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("2"));
     fireEvent.press(getByText("="));
     expect(queryByText("1+2=3")).toBeTruthy();
-    fireEvent.press(getByText("C"));
+    fireEvent.press(getByTestId("C"));
+    expect(queryByText("1+2=3")).toBeNull();
+  });
+  test("hello", () => {
+    const { getByText, queryByText, getByTestId } = render(<Display />);
+
+    fireEvent.press(getByText("1"));
+    fireEvent.press(getByText("+"));
+    fireEvent.press(getByText("2"));
+    fireEvent.press(getByText("="));
+    expect(queryByText("1+2=3")).toBeTruthy();
+    fireEvent.press(getByTestId("C"));
     expect(queryByText("1+2=3")).toBeNull();
   });
 });

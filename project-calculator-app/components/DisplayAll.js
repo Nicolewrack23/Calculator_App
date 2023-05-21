@@ -1,6 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import Buttons from "./ButtonContainer";
 import ShowCalculation from "./ShowCalculation";
+import Accordion from "./Accordion";
 import { useState, useEffect } from "react";
 import calculateResult from "./Calculate";
 import { storeData, getData, clearData } from "./LocalStorage";
@@ -14,8 +15,9 @@ const Display = () => {
   const [firstPeriod, setFirstPeriod] = useState(false);
   const [secondPeriod, setSecondPeriod] = useState(false);
   const [equals, setEquals] = useState(false);
-  const [history, setHistory] = useState("");
+  const [history, setHistory] = useState(" ");
   const [lastNumber, setLastNumber] = useState("");
+  const [storedData, setStoredData] = useState([]);
 
   const rightValues = ["X", "-", "+", "="];
   const value = [
@@ -72,10 +74,12 @@ const Display = () => {
       setOperator(buttonValue);
     }
   };
+
   const handleSpecialButton = async (buttonValue) => {
     if (buttonValue === "AC") {
-      console.log("AC" + buttonValue);
+      fetchData();
       await clearData();
+      fetchData();
       setHistory("");
       setOperationDisplay(" ");
     } else if (buttonValue === "C") {
@@ -105,11 +109,9 @@ const Display = () => {
   };
 
   const saveHistory = async (equation) => {
-    console.log("hist" + equation);
     setHistory(equation);
     await storeData(equation);
-    const storedData = await getData();
-    console.log("Retrieved data:", storedData);
+    fetchData();
   };
 
   const isFirstOperand = (buttonValue) => {
@@ -137,8 +139,15 @@ const Display = () => {
     setSecondPeriod(false);
   };
 
+  const fetchData = async () => {
+    const getStoreData = await getData();
+    setStoredData([...getStoreData]);
+  };
+
   useEffect(() => {
+    fetchData();
     let displayValue = " ";
+
     if (firstOperand.length > 0) {
       setLastNumber(firstOperand.slice(-1));
     }
@@ -156,6 +165,7 @@ const Display = () => {
 
   return (
     <>
+      <Accordion storedData={storedData} />
       <ShowCalculation buttonClicked={operationDisplay} History={history} />
       <View style={styles.container}>
         <View style={styles.ButtonContainer}>
@@ -186,6 +196,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
+    marginBottom: 15,
   },
   ButtonContainer: {
     display: "flex",
