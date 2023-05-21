@@ -1,4 +1,4 @@
-import { Pressable, Text, Dimensions, StyleSheet } from "react-native";
+import { Pressable, View, Text, Dimensions, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 const { height } = Dimensions.get("window");
 
@@ -12,7 +12,9 @@ const Buttons = ({ value, rightValue, onButtonPress }) => {
   let buttonContent = null;
   if (value === "C") {
     buttonContent = (
-      <Feather testID="C" name="arrow-left" size={40} color="black" />
+      <View testID="Clear">
+        <Feather name="arrow-left" size={40} color="black" />
+      </View>
     );
   } else {
     buttonContent = (
