@@ -11,7 +11,7 @@ const Buttons = ({ value, rightValue, onButtonPress }) => {
   let buttonContent = null;
   if (value === "C") {
     buttonContent = (
-      <Feather name="arrow-left" size={40} color="black" testID="C" />
+      <Feather testID="C" name="arrow-left" size={40} color="black" />
     );
   } else {
     buttonContent = (
