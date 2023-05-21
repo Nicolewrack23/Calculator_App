@@ -30,7 +30,7 @@ const Buttons = ({ value, rightValue, onButtonPress }) => {
         value === "AC" && styles.allClearButton,
         value === "C" && styles.backspaceButton,
         rightValue === "=" && styles.equalButton,
-        height >= 600 && styles.smallScreenPadding,
+        height <= 620 && styles.smallScreenPadding,
       ]}
       onPress={onButtonPress}
     >
