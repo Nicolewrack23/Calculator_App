@@ -113,4 +113,12 @@ describe("calculate the results", () => {
     const result = calculateResult(firstOperand, operator, secondOperand);
     expect(result[1]).toBe(expected);
   });
+  test("Calculations can be performed on 0.", () => {
+    const firstOperand = "0.21";
+    const operator = "+";
+    const secondOperand = "3";
+    const expected = 3.21;
+    const result = calculateResult(firstOperand, operator, secondOperand);
+    expect(result[1]).toBe(expected);
+  });
 });
