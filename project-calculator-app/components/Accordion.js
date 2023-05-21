@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: "95%",
     margin: 10,
-    marginTop: 35,
+    marginTop: 25,
     backgroundColor: "#BA9D9F",
     borderRadius: 5,
   },
