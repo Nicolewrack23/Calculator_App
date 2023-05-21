@@ -10,7 +10,7 @@ const Buttons = ({ value, rightValue, onButtonPress }) => {
 
   let buttonContent = null;
   if (value === "C") {
-    buttonContent = <Feather name="arrow-left" size={32} color="black" />;
+    buttonContent = <Feather name="arrow-left" size={40} color="black" />;
   } else {
     buttonContent = (
       <Text style={[styles.value, value === "AC" && styles.allClearButton]}>
