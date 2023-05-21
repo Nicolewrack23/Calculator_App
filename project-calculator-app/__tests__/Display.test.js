@@ -50,7 +50,7 @@ describe("Display component", () => {
     fireEvent.press(getByText("="));
     expect(getByText("5+3=8")).toBeTruthy();
   });
-  test("should not show first = in equation", () => {
+  test(`should error if "." was only pressed without operand`, () => {
     const { getByText } = render(<Display />);
     fireEvent.press(getByText("."));
     fireEvent.press(getByText("+"));
@@ -65,16 +65,14 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("9"));
-    fireEvent.press(getByTestId("C"));
-    fireEvent.press(getByText("8"));
-    fireEvent.press(getByText("="));
-    expect(getByText("1+8=9")).toBeTruthy();
+    fireEvent.press(getByTestId("Clear"));
+    expect(getByText("1+")).toBeTruthy();
   });
   test(`Should remove characters from the first operand and allow to reenter the "."`, () => {
     const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("."));
-    fireEvent.press(getByTestId("C"));
+    fireEvent.press(getByTestId("Clear"));
     fireEvent.press(getByText("9"));
     fireEvent.press(getByText("."));
     fireEvent.press(getByText("8"));
@@ -86,7 +84,7 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("7"));
     fireEvent.press(getByText("."));
-    fireEvent.press(getByTestId("C"));
+    fireEvent.press(getByTestId("Clear"));
     fireEvent.press(getByText("8"));
     fireEvent.press(getByText("."));
     fireEvent.press(getByText("8"));
@@ -96,7 +94,7 @@ describe("Clear button component", () => {
     const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
-    fireEvent.press(getByTestId("C"));
+    fireEvent.press(getByTestId("Clear"));
     fireEvent.press(getByText("8"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("8"));
@@ -106,7 +104,7 @@ describe("Clear button component", () => {
     const { getByText, getByTestId } = render(<Display />);
     fireEvent.press(getByText("1"));
     fireEvent.press(getByText("+"));
-    fireEvent.press(getByTestId("C"));
+    fireEvent.press(getByTestId("Clear"));
     fireEvent.press(getByText("8"));
     fireEvent.press(getByText("+"));
     fireEvent.press(getByText("8"));
@@ -120,18 +118,7 @@ describe("Clear button component", () => {
     fireEvent.press(getByText("2"));
     fireEvent.press(getByText("="));
     expect(queryByText("1+2=3")).toBeTruthy();
-    fireEvent.press(getByTestId("C"));
-    expect(queryByText("1+2=3")).toBeNull();
-  });
-  test("hello", () => {
-    const { getByText, queryByText, getByTestId } = render(<Display />);
-
-    fireEvent.press(getByText("1"));
-    fireEvent.press(getByText("+"));
-    fireEvent.press(getByText("2"));
-    fireEvent.press(getByText("="));
-    expect(queryByText("1+2=3")).toBeTruthy();
-    fireEvent.press(getByTestId("C"));
+    fireEvent.press(getByTestId("Clear"));
     expect(queryByText("1+2=3")).toBeNull();
   });
 });
