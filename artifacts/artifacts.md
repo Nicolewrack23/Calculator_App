@@ -88,3 +88,10 @@ The secondary use is to view the history of a past calculation so we have added 
 we have decided to change our clear or "C" button to an backspace button of our choice as there was confusion with the clear and found out that it was actually a backspace button we needed to implement.
 
 ![First draft wireframe](./updatedFinalDesign.png)
+
+## Outcome on apps
+
+The apps on mobile devices Pixel XL and Galaxy Nexus
+
+![Pixel XL](./PixelXL.png)
+![Galaxy Nexus](./GalaxyNexus.png)

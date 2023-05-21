@@ -1,5 +1,6 @@
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, View, Text, Dimensions, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
+const { height } = Dimensions.get("window");
 
 const Buttons = ({ value, rightValue, onButtonPress }) => {
   const operator =
@@ -11,7 +12,9 @@ const Buttons = ({ value, rightValue, onButtonPress }) => {
   let buttonContent = null;
   if (value === "C") {
     buttonContent = (
-      <Feather testID="C" name="arrow-left" size={40} color="black" />
+      <View testID="Clear">
+        <Feather name="arrow-left" size={40} color="black" />
+      </View>
     );
   } else {
     buttonContent = (
@@ -31,6 +34,7 @@ const Buttons = ({ value, rightValue, onButtonPress }) => {
         value === "AC" && styles.allClearButton,
         value === "C" && styles.backspaceButton,
         rightValue === "=" && styles.equalButton,
+        height <= 620 && styles.smallScreenPadding,
       ]}
       onPress={onButtonPress}
     >
@@ -79,5 +83,8 @@ const styles = StyleSheet.create({
   },
   secondaryColor: {
     backgroundColor: "#CA907E",
+  },
+  smallScreenPadding: {
+    padding: 10,
   },
 });

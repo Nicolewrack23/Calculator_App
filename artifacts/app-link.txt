@@ -1,0 +1,2 @@
+Android: exp://u.expo.dev/update/e8f352e8-3dd5-4519-8e21-3e7ce8ef7b3d
+iOS: exp://u.expo.dev/update/458170e3-9767-4103-b06f-0887debdc394

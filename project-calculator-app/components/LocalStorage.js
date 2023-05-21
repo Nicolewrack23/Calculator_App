@@ -28,7 +28,6 @@ export const clearData = async () => {
   try {
     await AsyncStorage.clear();
   } catch (e) {
-    // error reading value
+    console.log("error reading value :", error);
   }
-  console.log("Done.");
 };
