@@ -13,7 +13,7 @@ const Buttons = ({ value, rightValue, onButtonPress }) => {
   if (value === "C") {
     buttonContent = (
       <View testID="Clear">
-        <Feather name="arrow-left" size={40} color="black" />
+        <Feather name="arrow-left" size={40} color="#93E8E0" />
       </View>
     );
   } else {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   buttons: {
     display: "flex",
     borderRadius: 20,
-    backgroundColor: "#DBD8AE",
+    backgroundColor: "#969696",
     justifyContent: "center",
     alignItems: "center",
     margin: 2,
@@ -58,11 +58,11 @@ const styles = StyleSheet.create({
     flexBasis: "31%",
   },
   value: {
-    color: "#000",
+    color: "#ffffff",
     fontSize: 30,
   },
   equalButton: {
-    backgroundColor: "#BA9D9F",
+    backgroundColor: "#00564d",
     flexGrow: 1,
   },
   zeroButton: {
@@ -70,19 +70,17 @@ const styles = StyleSheet.create({
     flexBasis: "50%",
   },
   zero: {
-    color: "#000",
     fontSize: 30,
   },
   allClearButton: {
-    backgroundColor: "#9E2A2B",
-    color: "white",
+    backgroundColor: "#363636",
+    color: "#93E8E0",
   },
   backspaceButton: {
-    backgroundColor: "#B6636E",
-    color: "white",
+    backgroundColor: "#363636",
   },
   secondaryColor: {
-    backgroundColor: "#CA907E",
+    backgroundColor: "#00897b",
   },
   smallScreenPadding: {
     padding: 10,

@@ -22,9 +22,9 @@ const equationListAccordion = ({ storedData }) => {
             <Text style={styles.textStyling}>History</Text>
             <Text style={styles.textStyling}>
               {isOpen ? (
-                <AntDesign name="up" size={24} color="black" />
+                <AntDesign name="up" size={24} color="#6FB4AD" />
               ) : (
-                <AntDesign name="down" size={24} color="black" />
+                <AntDesign name="down" size={24} color="#6FB4AD" />
               )}
             </Text>
           </View>
@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: "95%",
     margin: 10,
-    marginTop: 25,
-    backgroundColor: "#BA9D9F",
+    marginTop: 35,
     borderRadius: 5,
   },
   pressable: {
@@ -52,20 +51,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     flexDirection: "row",
     justifyContent: "space-between",
+    borderBottomColor: "#6FB4AD",
+    borderBottomWidth: 4,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
   textStyling: {
-    color: "#000",
+    color: "#fff",
     textAlign: "center",
     alignSelf: "center",
     fontSize: 24,
   },
   dropdown: {
-    backgroundColor: "#BA9D9F",
+    backgroundColor: "#000",
     position: "absolute",
     top: 50,
     padding: 10,
     width: "100%",
-    borderRadius: 5,
+    borderColor: "#6FB4AD",
+    borderBottomWidth: 4,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
   closed: {
     display: "none",
